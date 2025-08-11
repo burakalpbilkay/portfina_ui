@@ -1,9 +1,17 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
+
+jest.mock('react-router-dom', () => ({
+  Route: ({ element }: any) => element,
+  Routes: ({ children }: any) => <div>{children}</div>,
+  useNavigate: () => jest.fn(),
+}), { virtual: true });
+
+jest.mock('./Components/Home', () => () => <div>Home Mock</div>);
+
 import App from './App';
 
-test('renders learn react link', () => {
+test('renders home component', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const heading = screen.getByText(/Home Mock/i);
+  expect(heading).toBeInTheDocument();
 });

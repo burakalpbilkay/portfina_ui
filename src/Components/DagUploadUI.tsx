@@ -81,7 +81,7 @@ export default function DagUploadUI(){
 
   const fetchDagStatus = async (dag: string) => {
     try {
-      const res = await axios.get<DagStatusResponse>(`/status/${dag}`);
+      const res = await axios.get<DagStatusResponse>(`${apiBase}/status/${dag}`);
       const latestRun = res.data.dag_runs?.[0];
       if (latestRun) {
         setDagStatuses((prev) => ({
