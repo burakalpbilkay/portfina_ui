@@ -10,7 +10,7 @@ export default function useToast() {
   }, []);
 
   const warning = useCallback((message: string) => {
-    alert(`✅ Warning: ${message}`);
+    alert(`⚠️ Warning: ${message}`);
   }, []);
   return { success, error, warning };
 }
